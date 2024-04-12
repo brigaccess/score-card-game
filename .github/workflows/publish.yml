@@ -1,0 +1,14 @@
+name: Release
+permissions: read-all
+jobs:
+  publish:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          ref: ${{ env.ORT_VERSION }}
+          fetch-depth: 0
+      - name: Create GitHub Release
+        run: |
+          gh release create
